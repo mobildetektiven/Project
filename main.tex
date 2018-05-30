@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%Used to write discontinuous functions 
+\usepackage{amsmath}
+% used to write norm
+\usepackage{mathtools,xparse}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+\usepackage[lmargin=25mm,rmargin=25mm,tmargin=27mm,bmargin=30mm]{geometry}
+
+%Enable use of pgf figures
+\usepackage{pgfplots} 
+
+% err math function
+\DeclareMathOperator\err{err}
+
+%citing: write all articles in the .bib file. Only the ones that are cited in the project will appear
+% in the bibliography
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+%getting bold symbols in math mode
+\usepackage{bm}
+
+%getting unumbered subfigures
+\usepackage{caption}
+
+\title{Machine learning for condition monitoring of hydro electric powerplants}
+\author{Asgeir Øen Åsnes }
+\date{\today}
+
+%Remove intendation at newline
+\usepackage[parfill]{parskip}
+%Centering pgf images
+\usepackage{tikz}
+\usepackage{pgf}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\include{frontpage}
+
+
+
+
+\newpage
+\pagenumbering{roman}
+\section*{Preface}
+    This project thesis is written as a part of my Master's degree in Cybernetics and Robotics at NTNU Trondheim. The work is done during the fall of 2017. This project looks into condition monitoring of a mechanical component in a hydro electric powerplant. Machine learning techniques are used to try to classify the condition of the component. I chose this project because I wanted to learn more about machine learning, and to see how it can be utilized on condition monitoring in the industry. This also meant that I could benefit from my practical experience with maintenance in the industry, from working as a ship electrician offshore. The project is a collaboration between NTNU and Hymatek Controls.  
+
+    
+    \begin{center}
+    Trondheim, \today \\
+    \vspace{1.5cm}
+    Asgeir Øen Åsnes
+    \end{center}
+\clearpage
+
+\section*{Abstract}
+    Databased methods are used to try to classify the condition of the guide vanes in a Francis turbine in a hydro electric power plant. The data is taken from a large hydro electric power plant in Norway. The plant has four identical generator sets, with different maintenance schedules. They are therefore used as examples on how a plant changes over time. The analysis is performed using the following machine learning techniques, support vector machines, logistic regression and neural networks. There are two different datasets available for all the four turbines. A servo indication dataset, which today is used to manually estimate the condition of the guide vane system, and a dataset from commissioning. The performance of the different algorithms on the two different datasets are analyzed, to see which shows most promise. It is attempted to find out if data from commissioning holds the same information as a servo indication.  
+    
+    
+    The results shows that the servo indication data set is the easiest to extract information from. All the different algorithms were able to detect change in the condition of the turbines. The neural network and one class support vector machine gave the best results. The neural network had a prediction accuracy above $90\%$.  
+    
+    For the commissioning data, only one algorithm, the one class SVM gave useful results. The other algorithms were not able to handle the amount of non informative data included in the commissioning dataset. The other classifiers run into problems with the distribution of the data samples.  The one class support vector machine is however capable of producing almost the same results for the commissioning data, as it was for the servo indication. 
+
+
+    The oneclass SVM could give useful information about a turbine based on the results from the commissioning data.  However data from normal operation over a longer period might not be comparable to the commissioning data. But, one can argue that if one can figure out how to estimate the condition of the guide vanes from a classifier such as the one class SVM, it might not be necessary to perform a servo indication. The commissioning data seems to hold much of the same information.
+    
+    
+\clearpage    
+
+\section*{Contents}
+\makeatletter
+\@starttoc{toc}
+\makeatother
+\newpage
+
+
+% \listoffigures
+ 
+% \listoftables
+
+%Main matter 
+\pagenumbering{arabic}
+
+\include{introduction}
+\include{machineLearning}
+
+\include{data}
+
+\include{analysis}
+
+\include{discussion}
+
+\include{furtherWork}
+
+
+\newpage
+% Print the whole bibliography
+
+
+\printbibliography[heading=bibintoc,
+title={Bibliography}]
+\include{appendix}
+
+\end{document}

@@ -1,0 +1,25 @@
+
+
+\section{Conclusion and further work}
+
+\subsection{Conclusion}
+    
+    In this analysis four different machine learning approaches have been used, to try to classify the condition of the guide vanes in a Francis turbine. Two different datasets have been analyzed. The servo indication dataset yielded the far best results for the condition classification of the guide vanes. Here all the different approaches created reasonable decision boundaries and hence extract information about the guide vanes condition from the data. However, one class support vector machines and a neural network yielded the most accurate predictions and boundaries.   
+    
+    For the commissioning data set, only the one class support vector machine created a reasonable classifier and decision boundary. The other classifiers run into problems with the distribution of the data samples. The one class support vector machine is however capable of producing almost the same decision boundaries for the commissioning data, as it was for the servo indication. The exception is the boundary for turbine A1, which does not hold a wide enough set of samples.  
+    
+    The importance of feature engineering became very clear. Reducing the feature space to two dimensions, made it possible to visually analyze the performance of the classifiers by looking at the decision boundary they create. Machine learning is an iterative approach, and there are multiple iterations of analysis before the best results are found. Complex methods can be a challenge to use for relatively simple cases. They have an enormous potential, but this also makes them very hard to control, and if one is not carefull one can end up with overfitting. 
+    
+    The one class SVM could give useful information about a turbine based on the results from the commissioning data. However data from normal operation over a longer period might not be comparable to the commissioning data. But, one can argue that if one can figure out how to estimate the condition of the guide vanes from a classifier such as the one class SVM, it might not be necessary to perform a servo indication. The commissioning data seems to hold much of the same information. The dataset for turbine 1, A1 is the issue, it does not have data from the full opening range $Y$ and hence it is not able to create a valid boundary from the commissioning data. 
+    
+    
+\subsection{Further work}
+    A natural next step would be to perform a similar analysis on data from normal operation, preferably sampled over a longer time period. This might indicate if if is possible to extract the same information as the servo indication enables. To enable this, one must most likely find a way to remove the non-informative data from the datsets, as was shown to be an issue with the commissioning data. Finding a way to include the knowledge of the pattern one is looking for in the feature set, into a scoring function would be beneficial. Then the hyperaparmeterization could be done automatically, and might yield classifiers with better performances. This would also open up the possibility of adding more features, which could increase the accuracy of the classification.  
+
+
+    Adding more features from new sensors could also be an interesting thing to look at.  Vibration measurements might be a good option. It has been used for bearing condition monitoring in wind turbines \cite{Dias2016}, and might also be applicable for the guide vane case. 
+    
+    
+    Only one approach looked at one dataset at a time. For neural networks what is known as replicator neural networks or autoencoders could be used for anomaly detection. This approach trains a neural network to recreate the input as output, based on normal data. This would then enable classification with neural networks even if only one class of data is available for training. 
+    
+    
